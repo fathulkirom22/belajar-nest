@@ -1,11 +1,10 @@
-import { Controller, Request, Res, Get, Post, UseGuards, HttpStatus } from '@nestjs/common';
+import { Controller, Request, Get, Post, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { UsersService } from './users/users.service';
-import { get } from 'http';
-import { User } from './users/user.entity';
+import { Users } from './users/users.entity';
 
 @Controller()
 export class AppController {
@@ -22,9 +21,8 @@ export class AppController {
   }
 
   @Get('test')
-  async getTest(): Promise<User[]> {
+  async getTest(): Promise<Users[]> {
     return await this.usersService.findAll()
-    // res.json([]);
   }
 
   @UseGuards(LocalAuthGuard)
