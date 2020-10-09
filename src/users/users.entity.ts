@@ -11,7 +11,7 @@ export class Users {
   @Column()
   password: string;
 
-  @Column('tinyint')
+  @Column('boolean')
   active: number;
 
   @Column()
