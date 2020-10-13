@@ -10,13 +10,4 @@ export class Users {
 
   @Column()
   password: string;
-
-  @Column('boolean')
-  active: number;
-
-  @Column()
-  api_token: string;
-
-  @Column()
-  base_factor: number;
 }
