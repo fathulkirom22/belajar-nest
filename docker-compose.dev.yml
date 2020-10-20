@@ -11,8 +11,7 @@ services:
       - postgres
     volumes:
       - ./:/usr/src/app
-    command: >
-      bash -c "yarn build && yarn nestjs-command create:user && yarn start:dev"
+    command: yarn start:dev
   postgres:
     container_name: postgres
     image: postgres
