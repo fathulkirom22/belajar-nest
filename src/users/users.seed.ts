@@ -11,7 +11,7 @@ constructor(
 
 @Command({ command: 'create:user', describe: 'create a user', autoExit: true })
   async create() {
-    const user = await this.userService.createAndSave(
+    const user = await this.userService.create(
       {
         email: 'kirom222@gmail.com',
         password: '123456',

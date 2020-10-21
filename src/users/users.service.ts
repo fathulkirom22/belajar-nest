@@ -12,7 +12,7 @@ export class UsersService {
     private usersRepository: Repository<Users>,
   ){}
 
-  async createAndSave(req: CreateUsersDto) {
+  async create(req: CreateUsersDto) {
     const user = this.usersRepository.create()
     user.email = req.email
     user.password = req.password
@@ -27,16 +27,17 @@ export class UsersService {
     return this.usersRepository.findOne(id);
   }
 
-  findOneByEmail(email: string): Promise<Users> {
-    return this.usersRepository.findOne(
-      { where:
-        { email: email }
-      }
-    )
-  }
-
   async remove(id: string): Promise<void> {
     await this.usersRepository.delete(id);
+  }
+
+  findOneByEmailForLogin(email: string): Promise<Users> {
+    return this.usersRepository.findOne(
+      { 
+        select: [ "email", "password"],
+        where: { email: email }
+      }
+    )
   }
 
 }
