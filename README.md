@@ -1,4 +1,4 @@
-# yarn nestjs-command create:user
+# yarn nestjs-command seed:user
 
 
 <p align="center">

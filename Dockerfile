@@ -1,4 +1,4 @@
-FROM node:12.19.0
+FROM node
 
 WORKDIR /usr/src/app
 
@@ -13,4 +13,6 @@ COPY . .
 
 EXPOSE 3080
 
-CMD [ "yarn", "start" ]
+RUN yarn build
+
+CMD [ "yarn", "start:prod" ]

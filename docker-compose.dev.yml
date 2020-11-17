@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  web:
+  api:
     container_name: nest
     build: .
     ports:
@@ -17,9 +17,8 @@ services:
     image: postgres
     ports:
       - "5432:5432"
-    # volumes:
-      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      # - postgres_data:/var/lib/postgresql/data/
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     networks:
       - webnet
     environment:
@@ -29,5 +28,5 @@ services:
 
 networks:
   webnet:
-# volumes:
-#   postgres_data:
+volumes:
+  postgres_data:

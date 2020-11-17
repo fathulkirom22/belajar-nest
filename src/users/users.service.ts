@@ -12,11 +12,11 @@ export class UsersService {
     private usersRepository: Repository<Users>,
   ){}
 
-  async create(req: CreateUsersDto) {
+  create(req: CreateUsersDto) {
     const user = this.usersRepository.create()
     user.email = req.email
     user.password = req.password
-    return await this.usersRepository.save(user)
+    return this.usersRepository.save(user)
   }
 
   findAll(): Promise<Users[]> {

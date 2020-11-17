@@ -12,6 +12,9 @@ export class Users {
   @Column({ select: false })
   password: string;
 
+  @Column({nullable: true})
+  name: string;
+
   @BeforeInsert()
   async hashPassword() {
     this.password = await bcrypt.hash(this.password, Number(process.env.HASH_SALT));
