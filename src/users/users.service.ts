@@ -16,6 +16,7 @@ export class UsersService {
     const user = this.usersRepository.create()
     user.email = req.email
     user.password = req.password
+    user.name = req.name
     return this.usersRepository.save(user)
   }
 
