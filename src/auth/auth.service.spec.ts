@@ -1,4 +1,7 @@
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
+import { Repository } from 'typeorm';
+import { UsersService } from '../users/users.service';
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
@@ -6,7 +9,19 @@ describe('AuthService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthService],
+      providers: [
+        AuthService,
+        {
+          provide: 'UsersRepository',
+          useClass: Repository
+        },
+        UsersService,
+        {
+          provide: 'JWT_MODULE_OPTIONS',
+          useClass: JwtModule
+        },
+        JwtService
+      ],
     }).compile();
 
     service = module.get<AuthService>(AuthService);

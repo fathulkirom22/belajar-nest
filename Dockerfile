@@ -1,18 +1,13 @@
-FROM node
+FROM node:12.19.1-alpine
+
+ARG NODE_ENV
+ENV NODE_ENV=$NODE_ENV
 
 WORKDIR /usr/src/app
-
 COPY package*.json ./
-
-RUN yarn install
-
+RUN yarn install --production=false
 COPY . .
-
-# seeder user
-# RUN yarn nestjs-command create:user
-
-EXPOSE 3080
-
+EXPOSE 3000
 RUN yarn build
 
 CMD [ "yarn", "start:prod" ]
