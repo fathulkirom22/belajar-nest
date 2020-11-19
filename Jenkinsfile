@@ -9,6 +9,7 @@ pipeline {
                     ls -lah
                 '''
                 sh 'yarn --version'
+                sh 'yarn install'
                 sh 'yarn test'
             }
         }
